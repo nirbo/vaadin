@@ -1,6 +1,0 @@
-09-26 11:59:38 jdbc[2]: exception
-org.h2.jdbc.JdbcSQLException: Table "PERSON" not found; SQL statement:
-ALTER TABLE PERSON DROP CONSTRAINT FK_PERSON_BOSS_ID [42102-160]
-09-26 11:59:38 jdbc[2]: exception
-org.h2.jdbc.JdbcSQLException: Table "PERSON" not found; SQL statement:
-DROP TABLE PERSON [42102-160]

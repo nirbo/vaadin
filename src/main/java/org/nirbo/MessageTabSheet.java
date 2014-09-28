@@ -6,12 +6,13 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.TabSheet;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.VerticalLayout;
-import org.nirbo.Model.Message;
+import org.nirbo.Model.SplashMessages;
 
 public class MessageTabSheet extends TabSheet {
 
     Table messageTable;
     Label addMessageLabel;
+    JPAContainer<SplashMessages> messages;
 
     public MessageTabSheet() {
         setSizeFull();
@@ -28,27 +29,18 @@ public class MessageTabSheet extends TabSheet {
     }
 
     private Table createShowMessageTable() {
-        JPAContainer<Message> messages = JPAContainerFactory.make(Message.class, "cinemallPU");
-        Object[] messageTableColumns = {"id", "title", "content", "published_date", "start_date", "end_date", "active"};
-        String[] messageTableHeaders = {"ID", "Title", "Content", "Published Date", "Start Date", "End Date", "Active"};
+        messages = JPAContainerFactory.make(SplashMessages.class, "cinemallPU");
+//        Object[] messageTableColumns = {"title", "content", "published_date", "start_date", "end_date", "active"};
+        String[] messageTableHeaders = {"Title", "Content", "Published Date", "Start Date", "End Date", "Active"};
 
-        Table showMessageTable = new Table("", messages);
-        showMessageTable.setVisibleColumns(messageTableColumns);
+        Table showMessageTable = new Table(null, messages);
+        showMessageTable.setContainerDataSource(messages);
+//        showMessageTable.setVisibleColumns(messageTableColumns);
         showMessageTable.setColumnHeaders(messageTableHeaders);
         showMessageTable.setSizeFull();
-        showMessageTable.setSelectable(true);
         showMessageTable.setBuffered(true);
         showMessageTable.setEditable(true);
         showMessageTable.setImmediate(true);
-
-        System.out.println(messages.getContainerPropertyIds());
-
-//        showMessageTable.addContainerProperty("Title", String.class, null);
-//        showMessageTable.addContainerProperty("Content", String.class, null);
-//        showMessageTable.addContainerProperty("Published Date", String.class, null);
-//        showMessageTable.addContainerProperty("Start Date", String.class, null);
-//        showMessageTable.addContainerProperty("End Date", String.class, null);
-//        showMessageTable.addContainerProperty("Active", String.class, null);
 
         return showMessageTable;
     }
