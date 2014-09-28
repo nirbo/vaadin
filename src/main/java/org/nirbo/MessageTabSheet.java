@@ -30,12 +30,12 @@ public class MessageTabSheet extends TabSheet {
 
     private Table createShowMessageTable() {
         messages = JPAContainerFactory.make(SplashMessages.class, "cinemallPU");
-//        Object[] messageTableColumns = {"title", "content", "published_date", "start_date", "end_date", "active"};
+        Object[] messageTableColumns = {"title", "content", "publishedDate", "startDate", "endDate", "active"};
         String[] messageTableHeaders = {"Title", "Content", "Published Date", "Start Date", "End Date", "Active"};
 
         Table showMessageTable = new Table(null, messages);
         showMessageTable.setContainerDataSource(messages);
-//        showMessageTable.setVisibleColumns(messageTableColumns);
+        showMessageTable.setVisibleColumns(messageTableColumns);
         showMessageTable.setColumnHeaders(messageTableHeaders);
         showMessageTable.setSizeFull();
         showMessageTable.setBuffered(true);

@@ -16,6 +16,7 @@ public class SplashMessages {
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer getId() {
         return id;
     }
@@ -95,8 +96,7 @@ public class SplashMessages {
         if (content != null ? !content.equals(that.content) : that.content != null) return false;
         if (endDate != null ? !endDate.equals(that.endDate) : that.endDate != null) return false;
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (publishedDate != null ? !publishedDate.equals(that.publishedDate) : that.publishedDate != null)
-            return false;
+        if (publishedDate != null ? !publishedDate.equals(that.publishedDate) : that.publishedDate != null) return false;
         if (startDate != null ? !startDate.equals(that.startDate) : that.startDate != null) return false;
         if (title != null ? !title.equals(that.title) : that.title != null) return false;
 
